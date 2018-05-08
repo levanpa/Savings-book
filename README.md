@@ -6,17 +6,35 @@ Hơn bất cứ lĩnh vực nào, hoạt động của Ngân hàng thương mạ
 Với nhu cầu mở rộng các dịch vụ của các Ngân hàng hiện nay. Dự án phần mềm “QUẢN LÝ GIAO DỊCH GỬI TIỀN TIẾT KIỆM BẰNG PHẦN MỀM” tìm hiểu và xây dựng một chương trình sử dụng cho nhân viên ngân hàng mà ở đó người dùng có thể dễ dàng quản lý dữ liệu và các giao dịch về gửi tiền tiết kiệm của khách hàng.
 
 ----------------------
-Phần mềm này yêu cầu cài đặt Microsoft SQL Server 2010 trở lên. Phù hợp cho windows 32 bit và 64 bit.
+Phần mềm này yêu cầu:
+-
+Windows 32 bits hoặc 64 bits chạy Windows 7 trở lên, phù hợp với tất cả các phiên bản
+Microsoft SQL Server 2015 trở lên
+Microsoft .NET Framework 4.5 trở lên
 
 ----------------------
-HƯỚNG DẪN CÀI ĐẶT
+Hướng dẫn cài đặt:
 -
-Chỉ cần mở file setup.exe lên rồi bấm Next liên tục. Cuối cùng bấm Finish là xong.
+Phần mềm chạy ngay không cần cài đặt phức tạp.
+Yêu cầu có tài khoản đăng nhập, tài khoản mặc định là: admin / mật khẩu: admin
+
+----------------------
+Công nghệ áp dụng:
+-
+Môi trường phát triển: Microsoft Visual Studio 2015
+Ngôn ngữ lập trình: C#
+Thiết kế giao diện: Windows Form
 
 ----------------------
 Tác giả và đóng góp:
-Họ tên 4 thành viên
+-
+Đây là đồ án môn Nhập môn Công nghệ Phần mềm
+GVHD: thầy Nguyễn Công Hoan
+Thành viên nhóm:
+Lê Văn Pa
+Trịnh Duy Thanh
+Nguyễn Đức Tuấn
+Trương Văn Nhất
 
 ----------------------
 Phiên bản: 1.0
-
