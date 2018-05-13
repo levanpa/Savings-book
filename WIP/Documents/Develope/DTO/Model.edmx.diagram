@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b11ff681ec2749de8da1ca2687dacbab" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.ACCOUNT" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.CAPNHAT" Width="1.5" PointX="5.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.GIAODICH" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.GIAODICHVIEN" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.LOAITK" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.PHONGBAN" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.QUAYGD" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySoTietKiemModel.STK" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_GIAODICHVIEN_TAIKHOAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_CAPNHAT_GIAODICHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_CAPNHAT_LOAITK" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_CAPNHAT_STK" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_GIAODICH_GIAODICHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_GIAODICH_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_GIAODICH_QUAYGD" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_GIAODICHVIEN_PHONGBAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_PHONGBAN_GIAODICHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_STK_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySoTietKiemModel.FK_STK_LOAITK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

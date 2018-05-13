@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLySoTietKiemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TAIKHOAN" Type="varchar" MaxLength="50" />
+          <Property Name="MATKHAU" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CAPNHAT">
+          <Key>
+            <PropertyRef Name="MACN" />
+          </Key>
+          <Property Name="MACN" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MAGDV" Type="char" MaxLength="10" />
+          <Property Name="MASTK" Type="char" MaxLength="10" />
+          <Property Name="MALOAITK" Type="char" MaxLength="10" />
+          <Property Name="NGAYCN" Type="smalldatetime" />
+          <Property Name="SODU" Type="money" />
+          <Property Name="NGAYBD" Type="smalldatetime" />
+          <Property Name="NGAYDH" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="GIAODICH">
+          <Key>
+            <PropertyRef Name="SOGD" />
+          </Key>
+          <Property Name="SOGD" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MAGDV" Type="char" MaxLength="10" />
+          <Property Name="MAKH" Type="char" MaxLength="10" />
+          <Property Name="MAQUAYGD" Type="char" MaxLength="10" />
+          <Property Name="NGAYGD" Type="smalldatetime" />
+          <Property Name="CTGD" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GIAODICHVIEN">
+          <Key>
+            <PropertyRef Name="MAGDV" />
+          </Key>
+          <Property Name="MAGDV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MAPHONG" Type="char" MaxLength="10" />
+          <Property Name="HOTEN" Type="varchar" MaxLength="40" />
+          <Property Name="DIACHI" Type="varchar" MaxLength="40" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
+          <Property Name="NGAYSINH" Type="smalldatetime" />
+          <Property Name="CMND" Type="varchar" MaxLength="20" />
+          <Property Name="MATK" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HOTEN" Type="varchar" MaxLength="40" />
+          <Property Name="DIACHI" Type="varchar" MaxLength="40" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
+          <Property Name="NGAYSINH" Type="smalldatetime" />
+          <Property Name="CMND" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LOAITK">
+          <Key>
+            <PropertyRef Name="MALOAITK" />
+          </Key>
+          <Property Name="MALOAITK" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TENLOAI" Type="varchar" MaxLength="50" />
+          <Property Name="LAISUAT" Type="int" />
+          <Property Name="KIHAN" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="DIADIEM" Type="varchar" MaxLength="40" />
+          <Property Name="TRGPHONG" Type="char" MaxLength="10" />
+          <Property Name="NGAYNC" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="QUAYGD">
+          <Key>
+            <PropertyRef Name="MAQUAY" />
+          </Key>
+          <Property Name="MAQUAY" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TENQUAY" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="STK">
+          <Key>
+            <PropertyRef Name="MASTK" />
+          </Key>
+          <Property Name="MASTK" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MAKH" Type="char" MaxLength="10" />
+          <Property Name="MALOAITK" Type="char" MaxLength="10" />
+          <Property Name="NGAYMO" Type="smalldatetime" />
+          <Property Name="NGAYBD" Type="smalldatetime" />
+          <Property Name="NGAYDH" Type="smalldatetime" />
+          <Property Name="SODU" Type="money" />
+        </EntityType>
+        <Association Name="FK_CAPNHAT_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MAGDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAPNHAT_LOAITK">
+          <End Role="LOAITK" Type="Self.LOAITK" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITK">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAPNHAT_STK">
+          <End Role="STK" Type="Self.STK" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STK">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAGDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_QUAYGD">
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAYGD">
+              <PropertyRef Name="MAQUAY" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAQUAYGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICHVIEN_PHONGBAN">
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGBAN">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="GIAODICHVIEN">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICHVIEN_TAIKHOAN">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="MATK" />
+            </Principal>
+            <Dependent Role="GIAODICHVIEN">
+              <PropertyRef Name="MATK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHONGBAN_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="PHONGBAN">
+              <PropertyRef Name="TRGPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STK_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="STK" Type="Self.STK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="STK">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STK_LOAITK">
+          <End Role="LOAITK" Type="Self.LOAITK" Multiplicity="0..1" />
+          <End Role="STK" Type="Self.STK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITK">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="STK">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLySoTietKiemModelStoreContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAPNHAT" EntityType="Self.CAPNHAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAODICH" EntityType="Self.GIAODICH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAODICHVIEN" EntityType="Self.GIAODICHVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAITK" EntityType="Self.LOAITK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONGBAN" EntityType="Self.PHONGBAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUAYGD" EntityType="Self.QUAYGD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STK" EntityType="Self.STK" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CAPNHAT_GIAODICHVIEN" Association="Self.FK_CAPNHAT_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIEN" />
+            <End Role="CAPNHAT" EntitySet="CAPNHAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAPNHAT_LOAITK" Association="Self.FK_CAPNHAT_LOAITK">
+            <End Role="LOAITK" EntitySet="LOAITK" />
+            <End Role="CAPNHAT" EntitySet="CAPNHAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAPNHAT_STK" Association="Self.FK_CAPNHAT_STK">
+            <End Role="STK" EntitySet="STK" />
+            <End Role="CAPNHAT" EntitySet="CAPNHAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_GIAODICHVIEN" Association="Self.FK_GIAODICH_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIEN" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_KHACHHANG" Association="Self.FK_GIAODICH_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_QUAYGD" Association="Self.FK_GIAODICH_QUAYGD">
+            <End Role="QUAYGD" EntitySet="QUAYGD" />
+            <End Role="GIAODICH" EntitySet="GIAODICH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICHVIEN_PHONGBAN" Association="Self.FK_GIAODICHVIEN_PHONGBAN">
+            <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICHVIEN_TAIKHOAN" Association="Self.FK_GIAODICHVIEN_TAIKHOAN">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHONGBAN_GIAODICHVIEN" Association="Self.FK_PHONGBAN_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIEN" />
+            <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STK_KHACHHANG" Association="Self.FK_STK_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="STK" EntitySet="STK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STK_LOAITK" Association="Self.FK_STK_LOAITK">
+            <End Role="LOAITK" EntitySet="LOAITK" />
+            <End Role="STK" EntitySet="STK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLySoTietKiemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TAIKHOAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GIAODICHVIENs" Relationship="Self.FK_GIAODICHVIEN_TAIKHOAN" FromRole="ACCOUNT" ToRole="GIAODICHVIEN" />
+        </EntityType>
+        <EntityType Name="CAPNHAT">
+          <Key>
+            <PropertyRef Name="MACN" />
+          </Key>
+          <Property Name="MACN" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAGDV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MASTK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MALOAITK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYCN" Type="DateTime" Precision="0" />
+          <Property Name="SODU" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NGAYBD" Type="DateTime" Precision="0" />
+          <Property Name="NGAYDH" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GIAODICHVIEN" Relationship="Self.FK_CAPNHAT_GIAODICHVIEN" FromRole="CAPNHAT" ToRole="GIAODICHVIEN" />
+          <NavigationProperty Name="LOAITK" Relationship="Self.FK_CAPNHAT_LOAITK" FromRole="CAPNHAT" ToRole="LOAITK" />
+          <NavigationProperty Name="STK" Relationship="Self.FK_CAPNHAT_STK" FromRole="CAPNHAT" ToRole="STK" />
+        </EntityType>
+        <EntityType Name="GIAODICH">
+          <Key>
+            <PropertyRef Name="SOGD" />
+          </Key>
+          <Property Name="SOGD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAGDV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MAQUAYGD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYGD" Type="DateTime" Precision="0" />
+          <Property Name="CTGD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GIAODICHVIEN" Relationship="Self.FK_GIAODICH_GIAODICHVIEN" FromRole="GIAODICH" ToRole="GIAODICHVIEN" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_GIAODICH_KHACHHANG" FromRole="GIAODICH" ToRole="KHACHHANG" />
+          <NavigationProperty Name="QUAYGD" Relationship="Self.FK_GIAODICH_QUAYGD" FromRole="GIAODICH" ToRole="QUAYGD" />
+        </EntityType>
+        <EntityType Name="GIAODICHVIEN">
+          <Key>
+            <PropertyRef Name="MAGDV" />
+          </Key>
+          <Property Name="MAGDV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MATK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_GIAODICHVIEN_TAIKHOAN" FromRole="GIAODICHVIEN" ToRole="ACCOUNT" />
+          <NavigationProperty Name="CAPNHATs" Relationship="Self.FK_CAPNHAT_GIAODICHVIEN" FromRole="GIAODICHVIEN" ToRole="CAPNHAT" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.FK_GIAODICH_GIAODICHVIEN" FromRole="GIAODICHVIEN" ToRole="GIAODICH" />
+          <NavigationProperty Name="PHONGBAN" Relationship="Self.FK_GIAODICHVIEN_PHONGBAN" FromRole="GIAODICHVIEN" ToRole="PHONGBAN" />
+          <NavigationProperty Name="PHONGBANs" Relationship="Self.FK_PHONGBAN_GIAODICHVIEN" FromRole="GIAODICHVIEN" ToRole="PHONGBAN" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.FK_GIAODICH_KHACHHANG" FromRole="KHACHHANG" ToRole="GIAODICH" />
+          <NavigationProperty Name="STKs" Relationship="Self.FK_STK_KHACHHANG" FromRole="KHACHHANG" ToRole="STK" />
+        </EntityType>
+        <EntityType Name="LOAITK">
+          <Key>
+            <PropertyRef Name="MALOAITK" />
+          </Key>
+          <Property Name="MALOAITK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LAISUAT" Type="Int32" />
+          <Property Name="KIHAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAPNHATs" Relationship="Self.FK_CAPNHAT_LOAITK" FromRole="LOAITK" ToRole="CAPNHAT" />
+          <NavigationProperty Name="STKs" Relationship="Self.FK_STK_LOAITK" FromRole="LOAITK" ToRole="STK" />
+        </EntityType>
+        <EntityType Name="PHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIADIEM" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TRGPHONG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYNC" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GIAODICHVIENs" Relationship="Self.FK_GIAODICHVIEN_PHONGBAN" FromRole="PHONGBAN" ToRole="GIAODICHVIEN" />
+          <NavigationProperty Name="GIAODICHVIEN" Relationship="Self.FK_PHONGBAN_GIAODICHVIEN" FromRole="PHONGBAN" ToRole="GIAODICHVIEN" />
+        </EntityType>
+        <EntityType Name="QUAYGD">
+          <Key>
+            <PropertyRef Name="MAQUAY" />
+          </Key>
+          <Property Name="MAQUAY" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENQUAY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GIAODICHes" Relationship="Self.FK_GIAODICH_QUAYGD" FromRole="QUAYGD" ToRole="GIAODICH" />
+        </EntityType>
+        <EntityType Name="STK">
+          <Key>
+            <PropertyRef Name="MASTK" />
+          </Key>
+          <Property Name="MASTK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MALOAITK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYMO" Type="DateTime" Precision="0" />
+          <Property Name="NGAYBD" Type="DateTime" Precision="0" />
+          <Property Name="NGAYDH" Type="DateTime" Precision="0" />
+          <Property Name="SODU" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="CAPNHATs" Relationship="Self.FK_CAPNHAT_STK" FromRole="STK" ToRole="CAPNHAT" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_STK_KHACHHANG" FromRole="STK" ToRole="KHACHHANG" />
+          <NavigationProperty Name="LOAITK" Relationship="Self.FK_STK_LOAITK" FromRole="STK" ToRole="LOAITK" />
+        </EntityType>
+        <Association Name="FK_GIAODICHVIEN_TAIKHOAN">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="MATK" />
+            </Principal>
+            <Dependent Role="GIAODICHVIEN">
+              <PropertyRef Name="MATK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAPNHAT_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MAGDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAPNHAT_LOAITK">
+          <End Role="LOAITK" Type="Self.LOAITK" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITK">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAPNHAT_STK">
+          <End Role="STK" Type="Self.STK" Multiplicity="0..1" />
+          <End Role="CAPNHAT" Type="Self.CAPNHAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STK">
+              <PropertyRef Name="MASTK" />
+            </Principal>
+            <Dependent Role="CAPNHAT">
+              <PropertyRef Name="MASTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAGDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICH_QUAYGD">
+          <End Role="QUAYGD" Type="Self.QUAYGD" Multiplicity="0..1" />
+          <End Role="GIAODICH" Type="Self.GIAODICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAYGD">
+              <PropertyRef Name="MAQUAY" />
+            </Principal>
+            <Dependent Role="GIAODICH">
+              <PropertyRef Name="MAQUAYGD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAODICHVIEN_PHONGBAN">
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGBAN">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="GIAODICHVIEN">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHONGBAN_GIAODICHVIEN">
+          <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
+          <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAODICHVIEN">
+              <PropertyRef Name="MAGDV" />
+            </Principal>
+            <Dependent Role="PHONGBAN">
+              <PropertyRef Name="TRGPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STK_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="STK" Type="Self.STK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="STK">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STK_LOAITK">
+          <End Role="LOAITK" Type="Self.LOAITK" Multiplicity="0..1" />
+          <End Role="STK" Type="Self.STK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAITK">
+              <PropertyRef Name="MALOAITK" />
+            </Principal>
+            <Dependent Role="STK">
+              <PropertyRef Name="MALOAITK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLySoTietKiemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
+          <EntitySet Name="CAPNHATs" EntityType="Self.CAPNHAT" />
+          <EntitySet Name="GIAODICHes" EntityType="Self.GIAODICH" />
+          <EntitySet Name="GIAODICHVIENs" EntityType="Self.GIAODICHVIEN" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="LOAITKs" EntityType="Self.LOAITK" />
+          <EntitySet Name="PHONGBANs" EntityType="Self.PHONGBAN" />
+          <EntitySet Name="QUAYGDs" EntityType="Self.QUAYGD" />
+          <EntitySet Name="STKs" EntityType="Self.STK" />
+          <AssociationSet Name="FK_GIAODICHVIEN_TAIKHOAN" Association="Self.FK_GIAODICHVIEN_TAIKHOAN">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAPNHAT_GIAODICHVIEN" Association="Self.FK_CAPNHAT_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIENs" />
+            <End Role="CAPNHAT" EntitySet="CAPNHATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAPNHAT_LOAITK" Association="Self.FK_CAPNHAT_LOAITK">
+            <End Role="LOAITK" EntitySet="LOAITKs" />
+            <End Role="CAPNHAT" EntitySet="CAPNHATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAPNHAT_STK" Association="Self.FK_CAPNHAT_STK">
+            <End Role="STK" EntitySet="STKs" />
+            <End Role="CAPNHAT" EntitySet="CAPNHATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_GIAODICHVIEN" Association="Self.FK_GIAODICH_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIENs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_KHACHHANG" Association="Self.FK_GIAODICH_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICH_QUAYGD" Association="Self.FK_GIAODICH_QUAYGD">
+            <End Role="QUAYGD" EntitySet="QUAYGDs" />
+            <End Role="GIAODICH" EntitySet="GIAODICHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAODICHVIEN_PHONGBAN" Association="Self.FK_GIAODICHVIEN_PHONGBAN">
+            <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHONGBAN_GIAODICHVIEN" Association="Self.FK_PHONGBAN_GIAODICHVIEN">
+            <End Role="GIAODICHVIEN" EntitySet="GIAODICHVIENs" />
+            <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STK_KHACHHANG" Association="Self.FK_STK_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="STK" EntitySet="STKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STK_LOAITK" Association="Self.FK_STK_LOAITK">
+            <End Role="LOAITK" EntitySet="LOAITKs" />
+            <End Role="STK" EntitySet="STKs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLySoTietKiemModelStoreContainer" CdmEntityContainer="QuanLySoTietKiemEntities">
+          <EntitySetMapping Name="ACCOUNTs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="MATK" ColumnName="MATK" />
+                <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAPNHATs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.CAPNHAT">
+              <MappingFragment StoreEntitySet="CAPNHAT">
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="MAGDV" ColumnName="MAGDV" />
+                <ScalarProperty Name="MASTK" ColumnName="MASTK" />
+                <ScalarProperty Name="MALOAITK" ColumnName="MALOAITK" />
+                <ScalarProperty Name="NGAYCN" ColumnName="NGAYCN" />
+                <ScalarProperty Name="SODU" ColumnName="SODU" />
+                <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+                <ScalarProperty Name="NGAYDH" ColumnName="NGAYDH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAODICHes">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.GIAODICH">
+              <MappingFragment StoreEntitySet="GIAODICH">
+                <ScalarProperty Name="SOGD" ColumnName="SOGD" />
+                <ScalarProperty Name="MAGDV" ColumnName="MAGDV" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MAQUAYGD" ColumnName="MAQUAYGD" />
+                <ScalarProperty Name="NGAYGD" ColumnName="NGAYGD" />
+                <ScalarProperty Name="CTGD" ColumnName="CTGD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAODICHVIENs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.GIAODICHVIEN">
+              <MappingFragment StoreEntitySet="GIAODICHVIEN">
+                <ScalarProperty Name="MAGDV" ColumnName="MAGDV" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="MATK" ColumnName="MATK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAITKs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.LOAITK">
+              <MappingFragment StoreEntitySet="LOAITK">
+                <ScalarProperty Name="MALOAITK" ColumnName="MALOAITK" />
+                <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
+                <ScalarProperty Name="LAISUAT" ColumnName="LAISUAT" />
+                <ScalarProperty Name="KIHAN" ColumnName="KIHAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGBANs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.PHONGBAN">
+              <MappingFragment StoreEntitySet="PHONGBAN">
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="DIADIEM" ColumnName="DIADIEM" />
+                <ScalarProperty Name="TRGPHONG" ColumnName="TRGPHONG" />
+                <ScalarProperty Name="NGAYNC" ColumnName="NGAYNC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUAYGDs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.QUAYGD">
+              <MappingFragment StoreEntitySet="QUAYGD">
+                <ScalarProperty Name="MAQUAY" ColumnName="MAQUAY" />
+                <ScalarProperty Name="TENQUAY" ColumnName="TENQUAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STKs">
+            <EntityTypeMapping TypeName="QuanLySoTietKiemModel.STK">
+              <MappingFragment StoreEntitySet="STK">
+                <ScalarProperty Name="MASTK" ColumnName="MASTK" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MALOAITK" ColumnName="MALOAITK" />
+                <ScalarProperty Name="NGAYMO" ColumnName="NGAYMO" />
+                <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+                <ScalarProperty Name="NGAYDH" ColumnName="NGAYDH" />
+                <ScalarProperty Name="SODU" ColumnName="SODU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
