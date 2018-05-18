@@ -1,4 +1,4 @@
-# Savings-book
+﻿# Savings-book
 ----------------------
 PHẦN MỀM QUẢN LÍ SỔ TIẾT KIỆM
 -
@@ -23,7 +23,7 @@ Công nghệ áp dụng:
 -
 Môi trường phát triển: Microsoft Visual Studio 2015
 Ngôn ngữ lập trình: C#
-Thiết kế giao diện: Windows Form
+Thiết kế giao diện: C# Windows Form
 
 ----------------------
 Tác giả và đóng góp:
