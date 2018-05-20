@@ -24,6 +24,8 @@ Công nghệ áp dụng:
 Môi trường phát triển: Microsoft Visual Studio 2015
 Ngôn ngữ lập trình: C#
 Thiết kế giao diện: C# Windows Form
+Hệ quản trị Cơ sở dữ liệu: Microsoft SQL Server 2015
+Kết nối với CSDL: Entity Framework 6.0 
 
 ----------------------
 Tác giả và đóng góp:
