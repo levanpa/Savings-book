@@ -61,7 +61,7 @@ namespace WindowsFormsApplication9.GUI
 
         private void GuiCoKyHan_Click(object sender, EventArgs e)
         {
-            FormNhapRutTien f = new FormNhapRutTien();
+            FormGuiTienThu f = new FormGuiTienThu();
             this.Hide();
             f.ShowDialog();
             this.Show();
@@ -83,6 +83,21 @@ namespace WindowsFormsApplication9.GUI
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void rútTiềnSổCóKỳHạnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cậpNhậtLoạiSổTiếtKiệmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new CapNhatLoaiTK().ShowDialog();
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 

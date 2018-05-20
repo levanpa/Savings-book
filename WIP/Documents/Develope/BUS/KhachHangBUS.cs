@@ -23,5 +23,11 @@ namespace WindowsFormsApplication9.BUS
                 throw e;
             }
         }
+
+        // Tìm KH theo CMND
+        public KHACHHANG timKH(string cmnd)
+        {
+            return dao.timKH(cmnd);
+        }
     }
 }

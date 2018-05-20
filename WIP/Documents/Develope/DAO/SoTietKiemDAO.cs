@@ -29,8 +29,32 @@ namespace WindowsFormsApplication9.DAO
             }
         }
 
-        // Xoa
+        // Cập nhật STK
+        public void suaSTK(string MaSTK)
+        {
+            try
+            {
+                STK stk = db.STKs.SingleOrDefault(x => x.MASTK.Equals(MaSTK));
+                db.Entry(stk).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
 
-        // Sua
+        // Tìm STK theo MaSTK, đặt đại tên này để phân biệt 2 cái tìm nhé
+        public STK timSTK(string MaSTK)
+        {
+            try
+            {
+                return db.STKs.SingleOrDefault(x => x.MASTK.Equals(MaSTK));
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

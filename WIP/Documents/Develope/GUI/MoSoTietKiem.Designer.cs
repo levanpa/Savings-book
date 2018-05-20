@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbDiaChi = new System.Windows.Forms.Panel();
             this.lbdanhsach = new System.Windows.Forms.Label();
-            this.dtgvSTK = new System.Windows.Forms.DataGridView();
+            this.dgvSTK = new System.Windows.Forms.DataGridView();
             this.rdbNu = new System.Windows.Forms.RadioButton();
             this.rdbNam = new System.Windows.Forms.RadioButton();
             this.txtSoDu = new System.Windows.Forms.TextBox();
@@ -67,7 +67,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.lbDiaChi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSTK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSTK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +94,7 @@
             // 
             this.lbDiaChi.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbDiaChi.Controls.Add(this.lbdanhsach);
-            this.lbDiaChi.Controls.Add(this.dtgvSTK);
+            this.lbDiaChi.Controls.Add(this.dgvSTK);
             this.lbDiaChi.Controls.Add(this.rdbNu);
             this.lbDiaChi.Controls.Add(this.rdbNam);
             this.lbDiaChi.Controls.Add(this.txtSoDu);
@@ -141,15 +141,14 @@
             this.lbdanhsach.TabIndex = 48;
             this.lbdanhsach.Text = "Danh sách sổ tiết kiệm";
             // 
-            // dtgvSTK
+            // dgvSTK
             // 
-            this.dtgvSTK.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtgvSTK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSTK.Location = new System.Drawing.Point(789, 60);
-            this.dtgvSTK.Name = "dtgvSTK";
-            this.dtgvSTK.Size = new System.Drawing.Size(455, 193);
-            this.dtgvSTK.TabIndex = 47;
-            this.dtgvSTK.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSTK_CellContentClick);
+            this.dgvSTK.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvSTK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSTK.Location = new System.Drawing.Point(789, 60);
+            this.dgvSTK.Name = "dgvSTK";
+            this.dgvSTK.Size = new System.Drawing.Size(455, 193);
+            this.dgvSTK.TabIndex = 47;
             // 
             // rdbNu
             // 
@@ -434,7 +433,6 @@
             this.lbHoTen.Size = new System.Drawing.Size(84, 14);
             this.lbHoTen.TabIndex = 1;
             this.lbHoTen.Text = "Tên khách hàng";
-            this.lbHoTen.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -449,17 +447,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(1302, 463);
+            this.ClientSize = new System.Drawing.Size(1302, 445);
             this.Controls.Add(this.lbDiaChi);
             this.Controls.Add(this.panel1);
             this.Name = "MoSoTietKiem";
             this.Text = "Mở Sổ Tiết Kiệm";
-            this.Load += new System.EventHandler(this.MoSoTietKiem_Load_1);
+            this.Load += new System.EventHandler(this.MoSoTietKiem_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.lbDiaChi.ResumeLayout(false);
             this.lbDiaChi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSTK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSTK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -502,7 +500,7 @@
         private System.Windows.Forms.Label lbtiengui;
         private System.Windows.Forms.RadioButton rdbNu;
         private System.Windows.Forms.RadioButton rdbNam;
-        private System.Windows.Forms.DataGridView dtgvSTK;
+        private System.Windows.Forms.DataGridView dgvSTK;
         private System.Windows.Forms.Label lbdanhsach;
     }
 }

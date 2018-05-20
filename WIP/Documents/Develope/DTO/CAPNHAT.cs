@@ -19,7 +19,7 @@ namespace WindowsFormsApplication9.DTO
         public string MASTK { get; set; }
         public string MALOAITK { get; set; }
         public Nullable<System.DateTime> NGAYCN { get; set; }
-        public Nullable<decimal> SODU { get; set; }
+        public Nullable<double> SODU { get; set; }
         public Nullable<System.DateTime> NGAYBD { get; set; }
         public Nullable<System.DateTime> NGAYDH { get; set; }
     

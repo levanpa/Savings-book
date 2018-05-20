@@ -29,8 +29,23 @@ namespace WindowsFormsApplication9.BUS
             return dao.layDsSTK();
         }
 
-        // Xoa
+        // Cập nhật STK
+        public void suaSTK(string MaSTK)
+        {
+            try
+            {
+                dao.suaSTK(MaSTK);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
-        // Sua
+        // Tìm STK theo MaSTK, đặt đại tên này để phân biệt 2 cái tìm nhé
+        public STK timSTK(string MaSTK)
+        {
+            return dao.timSTK(MaSTK);
+        }
     }
 }

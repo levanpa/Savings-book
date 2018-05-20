@@ -22,7 +22,7 @@
           <Property Name="MASTK" Type="char" MaxLength="10" />
           <Property Name="MALOAITK" Type="char" MaxLength="10" />
           <Property Name="NGAYCN" Type="smalldatetime" />
-          <Property Name="SODU" Type="money" />
+          <Property Name="SODU" Type="float" />
           <Property Name="NGAYBD" Type="smalldatetime" />
           <Property Name="NGAYDH" Type="smalldatetime" />
         </EntityType>
@@ -69,7 +69,7 @@
           </Key>
           <Property Name="MALOAITK" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="TENLOAI" Type="varchar" MaxLength="50" />
-          <Property Name="LAISUAT" Type="int" />
+          <Property Name="LAISUAT" Type="float" />
           <Property Name="KIHAN" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PHONGBAN">
@@ -98,7 +98,7 @@
           <Property Name="NGAYMO" Type="smalldatetime" />
           <Property Name="NGAYBD" Type="smalldatetime" />
           <Property Name="NGAYDH" Type="smalldatetime" />
-          <Property Name="SODU" Type="money" />
+          <Property Name="SODU" Type="float" />
         </EntityType>
         <Association Name="FK_CAPNHAT_GIAODICHVIEN">
           <End Role="GIAODICHVIEN" Type="Self.GIAODICHVIEN" Multiplicity="0..1" />
@@ -310,7 +310,7 @@
           <Property Name="MASTK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="MALOAITK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="NGAYCN" Type="DateTime" Precision="0" />
-          <Property Name="SODU" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SODU" Type="Double" />
           <Property Name="NGAYBD" Type="DateTime" Precision="0" />
           <Property Name="NGAYDH" Type="DateTime" Precision="0" />
           <NavigationProperty Name="GIAODICHVIEN" Relationship="Self.FK_CAPNHAT_GIAODICHVIEN" FromRole="CAPNHAT" ToRole="GIAODICHVIEN" />
@@ -370,7 +370,7 @@
           </Key>
           <Property Name="MALOAITK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LAISUAT" Type="Int32" />
+          <Property Name="LAISUAT" Type="Double" />
           <Property Name="KIHAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CAPNHATs" Relationship="Self.FK_CAPNHAT_LOAITK" FromRole="LOAITK" ToRole="CAPNHAT" />
           <NavigationProperty Name="STKs" Relationship="Self.FK_STK_LOAITK" FromRole="LOAITK" ToRole="STK" />
@@ -404,7 +404,7 @@
           <Property Name="NGAYMO" Type="DateTime" Precision="0" />
           <Property Name="NGAYBD" Type="DateTime" Precision="0" />
           <Property Name="NGAYDH" Type="DateTime" Precision="0" />
-          <Property Name="SODU" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SODU" Type="Double" />
           <NavigationProperty Name="CAPNHATs" Relationship="Self.FK_CAPNHAT_STK" FromRole="STK" ToRole="CAPNHAT" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_STK_KHACHHANG" FromRole="STK" ToRole="KHACHHANG" />
           <NavigationProperty Name="LOAITK" Relationship="Self.FK_STK_LOAITK" FromRole="STK" ToRole="LOAITK" />

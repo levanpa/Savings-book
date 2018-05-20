@@ -26,11 +26,6 @@ namespace WindowsFormsApplication9.GUI
         {
             InitializeComponent();
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
         
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -58,33 +53,34 @@ namespace WindowsFormsApplication9.GUI
             stk.MASTK = "STK" + key.TotalMilliseconds.ToString().Substring(4, 7);
             stk.MAKH = kh.MAKH;
             stk.NGAYMO = DateTime.ParseExact(txtNgayMo.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
-            stk.NGAYBD = DateTime.ParseExact(txtNgayBD.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
+            //stk.NGAYBD = DateTime.ParseExact(txtNgayBD.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
             stk.SODU = 0; // Thêm mới
             
             switch (cbxLoaiTK.Text)
             {
                 case "Tiết kiệm có kỳ hạn 3 tháng":
                     stk.MALOAITK = "LTK01";
-                    stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    //stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
                     break;
                 case "Tiết kiệm có kỳ hạn 6 tháng":
                     stk.MALOAITK = "LTK02";
-                    stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    //stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
                     break;
                 case "Tiết kiệm có kỳ hạn 12 tháng":
-                    stk.MALOAITK = "LTK04";
-                    stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    stk.MALOAITK = "LTK03";
+                    //stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
                     break;
                 case "Tiết kiệm không kỳ hạn":
-                    stk.MALOAITK = "LTK03";
+                    stk.MALOAITK = "LTK04";
                     break;
                 default:
-                    stk.MALOAITK = "LTK03"; // Mặc định
+                    stk.MALOAITK = "LTK04"; // Mặc định
                     break;
             }
 
             busSTK.themSTK(stk);
             MessageBox.Show("Thêm STK thành công");
+            dgvSTK.DataSource = busSTK.layDsSTK(); 
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -105,10 +101,6 @@ namespace WindowsFormsApplication9.GUI
             kh.NGAYSINH = DateTime.ParseExact(txtNgaySinh.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
             kh.CMND = txtCMND.Text;
 
-            //if (ckbNam.Checked)
-            //    kh.GIOITINH = "Nam";
-            //else if (ckbNu.Checked)
-            //    kh.GIOITINH = "Nữ";
             if(rdbNam.Checked)
             {
                 kh.GIOITINH = "Nam";
@@ -124,7 +116,7 @@ namespace WindowsFormsApplication9.GUI
             stk.MAKH = kh.MAKH;
             stk.NGAYMO = DateTime.ParseExact(txtNgayMo.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
             stk.NGAYBD = DateTime.ParseExact(txtNgayBD.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
-            stk.SODU = decimal.Parse(txtSoDu.Text);
+            stk.SODU = int.Parse(txtSoDu.Text);
          
          
             switch (cbxLoaiTK.Text)
@@ -138,20 +130,20 @@ namespace WindowsFormsApplication9.GUI
                     stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
                     break;
                 case "Tiết kiệm có kỳ hạn 12 tháng":
-                    stk.MALOAITK = "LTK04";
+                    stk.MALOAITK = "LTK03";
                     stk.NGAYDH = DateTime.ParseExact(txtNgayDH.Text, "dd/M/yyyy", CultureInfo.InvariantCulture);
                     break;
                 case "Tiết kiệm không kỳ hạn":
-                    stk.MALOAITK = "LTK03";
+                    stk.MALOAITK = "LTK04";
                     break;
                 default:
-                    stk.MALOAITK = "LTK03"; // Mặc định
+                    stk.MALOAITK = "LTK04"; // Mặc định
                     break;
             }
 
             busSTK.themSTK(stk);
             MessageBox.Show("Gửi tiền thành công");
-
+            dgvSTK.DataSource = busSTK.layDsSTK();
         }
         
         private void cbxLoaiTK_TextChanged(object sender, EventArgs e)
@@ -160,40 +152,26 @@ namespace WindowsFormsApplication9.GUI
             switch (cbxLoaiTK.Text)
             {
                 case "Tiết kiệm có kỳ hạn 3 tháng":
-                    txtLaiSuat.Text = "1";
+                    txtLaiSuat.Text = "0.48";
                     break;
                 case "Tiết kiệm có kỳ hạn 6 tháng": 
-                    txtLaiSuat.Text = "2";
+                    txtLaiSuat.Text = "0.53";
                     break;
                 case "Tiết kiệm có kỳ hạn 12 tháng":
-                    txtLaiSuat.Text = "3";
+                    txtLaiSuat.Text = "0.66";
                     break;
                 case "Tiết kiệm không kỳ hạn":
-                    txtLaiSuat.Text = "4";
+                    txtLaiSuat.Text = "0.3";
                     break;
                 default:
-                    txtLaiSuat.Text = "4";
+                    txtLaiSuat.Text = "0.3";
                     break;
             }
-          
-           
         }
 
-        private void ckbNam_CheckedChanged(object sender, EventArgs e)
+        private void MoSoTietKiem_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void dtgvSTK_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-       
-           
-        }
-
-        private void MoSoTietKiem_Load_1(object sender, EventArgs e)
-        {
-            busSTK = new SoTietKiemBUS();
-            dtgvSTK.DataSource = busSTK.layDsSTK();
+            dgvSTK.DataSource = busSTK.layDsSTK();
         }
     }
 }

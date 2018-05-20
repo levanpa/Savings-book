@@ -23,5 +23,18 @@ namespace WindowsFormsApplication9.DAO
                 throw e; // Bao loi neu them KH that bai
             }
         }
+
+        // Tìm KH theo CMND
+        public KHACHHANG timKH(string cmnd)
+        {
+            try
+            {
+                return db.KHACHHANGs.SingleOrDefault(x => x.CMND.Equals(cmnd));
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

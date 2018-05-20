@@ -23,7 +23,7 @@ namespace WindowsFormsApplication9.DTO
     
         public string MALOAITK { get; set; }
         public string TENLOAI { get; set; }
-        public Nullable<int> LAISUAT { get; set; }
+        public Nullable<double> LAISUAT { get; set; }
         public string KIHAN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

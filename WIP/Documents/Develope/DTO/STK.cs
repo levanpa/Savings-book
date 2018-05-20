@@ -26,7 +26,7 @@ namespace WindowsFormsApplication9.DTO
         public Nullable<System.DateTime> NGAYMO { get; set; }
         public Nullable<System.DateTime> NGAYBD { get; set; }
         public Nullable<System.DateTime> NGAYDH { get; set; }
-        public Nullable<decimal> SODU { get; set; }
+        public Nullable<double> SODU { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CAPNHAT> CAPNHATs { get; set; }
