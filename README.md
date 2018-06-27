@@ -9,14 +9,14 @@ Với nhu cầu mở rộng các dịch vụ của các Ngân hàng hiện nay. 
 Phần mềm này yêu cầu:
 -
 Windows 32 bits hoặc 64 bits chạy Windows 7 trở lên, phù hợp với tất cả các phiên bản
-Microsoft SQL Server 2015 trở lên
+Microsoft SQL Server 2017 trở lên
 Microsoft .NET Framework 4.5 trở lên
 
 ----------------------
 Hướng dẫn cài đặt:
 -
 Phần mềm chạy ngay không cần cài đặt phức tạp.
-Yêu cầu có tài khoản đăng nhập, tài khoản mặc định là: admin / mật khẩu: admin
+Yêu cầu có tài khoản đăng nhập, tài khoản mặc định là: root / mật khẩu: 123
 
 ----------------------
 Công nghệ áp dụng:
@@ -30,7 +30,7 @@ Kết nối với CSDL: Entity Framework 6.0
 ----------------------
 Tác giả và đóng góp:
 -
-Đây là đồ án môn Nhập môn Công nghệ Phần mềm
+Đây là đồ án cuối kì môn Nhập môn Công nghệ Phần mềm tại trường đại học Công nghệ Thông tin - ĐHQG TPHCM
 GVHD: thầy Nguyễn Công Hoan
 Thành viên nhóm:
 Lê Văn Pa
